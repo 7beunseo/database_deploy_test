@@ -111,9 +111,9 @@ WSGI_APPLICATION = "reqruitment.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'likelion2025', # DB이름
-        'USER': 'root', # DB 유저 아이디
-        'PASSWORD': 'km923009!!', # 비밀번호
+        'NAME': 'likelion', # DB이름
+        'USER': 'admin', # DB 유저 아이디
+        'PASSWORD': 'likelion', # 비밀번호
         'HOST': 'localhost', # 또는 자신이 설정한 호스트
         'PORT': '3306', # db가 연결된 포트(여기서는 기본 포트)
     }
