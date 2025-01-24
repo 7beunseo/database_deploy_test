@@ -23,22 +23,17 @@ jobs:
         with:
           python-version: '3.12'
 
-	# 소스 빌드 
       - name: Build with Gradle
         run: |
           chmod +x ./gradlew
           ./gradlew clean build -x test
           
-    # dockerfile을 통해 이미지를 빌드하고, 이를 docker repo로 push
       - name: Docker build & push to docker repo
         run: |
           docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
           docker build -f Dockerfile -t ${{ secrets.DOCKER_REPO }}/2025likelion .
           docker push ${{ secrets.DOCKER_REPO }}/2025likelion
 
-	# 기존에 실행되는 컨테이너 모두 멈춤 
-	# 서버에 접속하여 pull 한 후 실행 
-        # docker-comppose에 작성해둔 컨테이너 백그라운드로 실행
       - name: Deploy to server
         uses: appleboy/ssh-action@master
         id: deploy
